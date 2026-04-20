@@ -1,0 +1,46 @@
+{
+  // StellarForge OS — Configuración Kilo Code
+  // Autor: Giovanny Anthony Corpus Bernal
+  // Última actualización: 2026
+
+  // Archivos de reglas adicionales que se concatenan al system prompt
+  "instructions": [
+    "./rules.md"
+  ],
+
+  // Agentes disponibles (definidos en .kilo/agents/)
+  // Selecciona desde el Agent Manager de Kilo Code en VS Code
+  // - stellarforge-architect  → Decisiones de diseño y arquitectura
+  // - quantum-coder           → Implementación de código
+  // - kernel-debugger         → Diagnóstico y corrección de errores
+
+  // Configuración del modo de auto-aprobación
+  // RECOMENDACIÓN: mantener en false durante desarrollo del kernel
+  // para revisar cada cambio antes de aplicarlo
+  "autoApprove": {
+    "readFiles": true,
+    "writeFiles": false,
+    "executeCommands": false,
+    "browserActions": false
+  },
+
+  // Modelos por tipo de tarea
+  "models": {
+    // Arquitectura y razonamiento complejo → modelo más potente
+    "architect": "claude-sonnet-4-20250514",
+    // Coding y edición rápida → mismo modelo (balance costo/calidad)
+    "coder": "claude-sonnet-4-20250514",
+    // Debugging → mismo modelo
+    "debugger": "claude-sonnet-4-20250514"
+  },
+
+  // Contexto adicional que Kilo Code incluirá automáticamente
+  "context": {
+    // Incluir archivos Cargo.toml y package.json para contexto de dependencias
+    "includeFiles": [
+      "kernel/Cargo.toml",
+      "quantum/requirements.txt",
+      "dashboard/package.json"
+    ]
+  }
+}
