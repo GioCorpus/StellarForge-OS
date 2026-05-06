@@ -1,0 +1,46 @@
+[package]
+name = "stellarforge-kernel"
+version = "0.1.0"
+edition = "2021"
+authors = ["Giovanny Anthony Corpus Bernal <gio.corpus@example.com>"]
+description = "Quantum-photonic kernel for Dyson Swarm governance"
+license = "MIT"
+repository = "https://github.com/GioCorpus/StellarForge-OS"
+
+[dependencies]
+# Core dependencies
+spin = "0.9.8"
+volatile = "0.4.6"
+bitflags = "2.4.1"
+
+# Photonic layer
+embedded-hal = "0.2.7"
+nb = "1.1.0"
+
+# Quantum interface
+serde = { version = "1.0.193", default-features = false, features = ["derive"] }
+postcard = "1.0.8"
+
+# Storage (Cuarzo 4D)
+heapless = "0.8.0"
+
+# Scheduler and timing
+x86_64 = "0.14.10"
+uart_16550 = "0.3.0"
+pic8259 = "0.11.0"
+pc-keyboard = "0.6.1"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+lto = true
+codegen-units = 1
+opt-level = "s"
+
+[features]
+default = ["photonic", "quantum", "storage"]
+photonic = []
+quantum = []
+storage = []

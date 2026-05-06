@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Custom CSS variables for StellarForge OS theme */
+:root {
+  --color-void: #0a0a0f;
+  --color-amber: #f59e0b;
+  --color-cyan: #06b6d4;
+  --color-stellar-500: #06b6d4;
+  --color-quantum-500: #d946ef;
+}
+
+/* Base styles */
+body {
+  @apply bg-void text-gray-100 font-sans antialiased;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  @apply font-mono text-sm;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono',
+    'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
+    'Courier New', monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Component styles */
+.stellar-card {
+  @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg p-6;
+}
+
+.quantum-glow {
+  @apply shadow-lg shadow-cyan-500/20;
+}
+
+.stellar-button {
+  @apply bg-stellar-500 hover:bg-stellar-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
+}
+
+.quantum-button {
+  @apply bg-quantum-500 hover:bg-quantum-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
+}
+
+.void-input {
+  @apply bg-gray-900 border border-gray-700 text-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500;
+}
+
+/* Animation classes */
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8);
+  }
+}
+
+/* Status indicator styles */
+.status-online {
+  @apply bg-green-500;
+}
+
+.status-standby {
+  @apply bg-yellow-500;
+}
+
+.status-maintenance {
+  @apply bg-orange-500;
+}
+
+.status-critical {
+  @apply bg-red-500;
+}
+
+.status-offline {
+  @apply bg-gray-500;
+}
+
+/* Metric display styles */
+.metric-value {
+  @apply text-2xl font-bold text-cyan-400;
+}
+
+.metric-label {
+  @apply text-sm text-gray-400 uppercase tracking-wide;
+}
+
+/* Grid layout for dashboard */
+.dashboard-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.stellar-section {
+  @apply stellar-card quantum-glow;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .metric-value {
+    @apply text-xl;
+  }
+}
